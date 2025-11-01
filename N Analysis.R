@@ -12,7 +12,7 @@ library("pwr")
 library(MASS)
 library(MoMAColors)
 display.all.moma()
-#--Question 1
+#--Ammonia
 rm(list=ls())
-nitrate <- read_csv("Thesis/cbuck/NO3PlotsInc.csv")
-View(nitrate)
+Ammonia <- read_csv("NH4PlotsInc.csv")
+View(Ammonia)
