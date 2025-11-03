@@ -1,0 +1,31 @@
+sample_date,state,county,site,mother_name,plate_date,germ_date,germ_success,lat,long,elevation,notes
+10/18/25,California,Ventura,Harmon,Harmon1,10/27/25,,,34.1718,-119.1151,130,
+10/18/25,California,Ventura,Harmon,Harmon2,10/27/25,,,34.1718,-119.1151,130,
+10/18/25,California,Ventura,Harmon,Harmon3,10/27/25,,,34.1721,-119.1148,130,
+10/13/25,California,Ventura,Arroyo,Arroyo1,10/27/25,,,34.2941,-119.2272,180,
+10/13/25,California,Ventura,Arroyo,Arroyo2,10/27/25,,,34.2917,-119.2258,155,
+10/13/25,California,Ventura,Arroyo,Arroyo3,10/27/25,,,34.2932,-119.2274,170,
+10/13/25,California,Ventura,Hills,Hills1,10/27/25,,,34.1712,-119.1532,100,Hillside. No foot traffic. Gas pipeline
+10/13/25,California,Ventura,Hills,Hills2,10/27/25,,,34.1713,-119.1532,110,East facing
+10/13/25,California,Ventura,Hills,Hills3,10/27/25,,,34.176,-119.1535,140,
+10/13/25,California,Ventura,BigRock,Bigrock1,10/28/25,,,34.214,-119.1815,50,"Riparian. Sandy, loam. Big shrub."
+10/13/25,California,Ventura,BigRock,Bigrock2,10/28/25,,,34.213,-119.1814,70,Photo at 3:30p. in the middle of rocks. Sandy
+10/13/25,California,Ventura,BigRock,Bigrock3,10/28/25,,,34.214,-119.1818,70,Alone. Sandy. Riparian
+9/23/25,California,Ventura,Willoughby,Willoughby1,10/28/25,,,34.2808,-119.3074,5.9,
+9/23/25,California,Ventura,Willoughby,Willoughby2,10/28/25,,,34.2811,-119.307,6.1,
+9/23/25,California,Ventura,Willoughby,Willoughby3,10/28/25,,,34.2811,-119.3074,5.4,
+10/4/25,California,Los Angeles,Franklin,Franklin1,10/28/25,,,34.1251,-118.407,293,mustard all over. very visited park
+10/4/25,California,Los Angeles,Franklin,Franklin2,10/28/25,,,34.1244,-118.4072,285,mustard all over. very visited park
+10/4/25,California,Los Angeles,Franklin,Franklin3,10/28/25,,,34.1215,-118.4069,308,mustard all over. very visited park
+10/4/25,California,Los Angeles,Fryman,Fryman1,10/29/25,,,34.1233,-118.3927,287,
+10/4/25,California,Los Angeles,Fryman,Fryman2,10/29/25,,,34.1251,-118.3944,294,
+10/4/25,California,Los Angeles,Fryman,Fryman3,10/29/25,,,34.1263,-118.3946,310,
+9/30/25,California,Los Angeles,Westridge,Westridge1,10/29/25,,,34.0898,-118.5113,390,closer to entrance. cliffside. 5m from trail
+9/30/25,California,Los Angeles,Westridge,Westridge2,10/29/25,,,34.0913,-118.5129,450,single small plant. early life. lost mustard around
+9/30/25,California,Los Angeles,Westridge,Westridge3,10/29/25,,,34.0971,-118.5132,488,2 shurbs. very rocky
+10/5/25,California,Los Angeles,Elyria,Elyria1,10/28/25,,,34.1032,-118.2218,198,Abundant. Cliffside. South facing
+10/5/25,California,Los Angeles,Elyria,Elyria2,10/28/25,,,34.1032,-118.22,186,
+10/5/25,California,Los Angeles,Elyria,Elyria3,10/28/25,,,34.1027,-118.2232,183,
+9/30/25,California,Los Angeles,Ballona,Ballona1,10/29/25,,,33.9678,-118.4281,2,Highway nearby. Marshy Wetlands
+9/30/25,California,Los Angeles,Ballona,Ballona2,10/29/25,,,33.97104,-118.4301,2,Highway nearby. Marshy Wetlands
+9/30/25,California,Los Angeles,Ballona,Ballona3,10/29/25,,,33.9686,-118.4292,3,Marshy welands
