@@ -208,12 +208,66 @@ View(NO3_Result)
 #             Correlation tests                     #
 #####################################################
 
-# Then do each type of correlation test
+# Pearson
 cor.test(Nitrate$absorbance, Nitrate$concentration, method="pearson")
 # r = 0.57, p = 0.006
-
+#Spearman
 cor.test(Nitrate$absorbance, Nitrate$concentration, method="spearman")
 # rho = 0.39, p = 0.07
-
+#Kendall
 cor.test(Nitrate$absorbance, Nitrate$concentration, method="kendall")
 # tau = 0.25, p = 0.11
+
+#####################################################
+#             Target N per kg for Pots              #
+#####################################################
+
+#Ammonia
+rm(list=ls())
+NH4 <- read.csv("Data/NH4_Calculated_Result.csv")
+View(NH4)
+# Sorting N per kg of soil w date filter
+NH4_21 <- subset(NH4, date == "10/21/25")
+
+NH4_21_sorted <- NH4_21[order(NH4$mgNH4_kg_soil), ]
+View(NH4_21_sorted)
+
+#Helps to see first and last concentrations 
+#head(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+#tail(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+summary(NH4_21_sorted$mgNH4_kg_soil)
+
+#--Making the gradient finally
+NH4_gradient <- quantile(NH4_21_sorted$mgNH4_kg_soil,
+         probs = c(0.25, 0.5, 0.75), na.rm=TRUE) #don't let the NA's get u chile
+NH4_gradient
+# NH4 thresholds
+cuts_NH4 <- quantile(NH4_21_sorted$mgNH4_kg_soil, probs = c(0.25, 0.5, 0.75), na.rm=TRUE)
+NH4_21_sorted$target_level <- cut(NH4_21_sorted$mgNH4_kg_soil,
+                                  breaks = c(-Inf, cuts_NH4, Inf),
+                                  labels = c("Low", "Med-Low", "Med-High", "High"))
+
+#Nitrate
+rm(list=ls())
+NO3 <- read.csv("Data/NO3_Calculated_Result.csv")
+View(NO3)
+# Sorting N per kg of soil w date filter
+NO3_21 <- subset(NO3, date == "10/21/25")
+
+NO3_21_sorted <- NO3_21[order(NO3$mgNO3_kg_soil), ]
+View(NO3_21_sorted)
+
+#Helps to see first and last concentrations 
+#head(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+#tail(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+summary(NO3_21_sorted$mgNO3_kg_soil)
+
+#--Making the gradient finally
+NO3_gradient <- quantile(NO3_21_sorted$mgNO3_kg_soil,
+                         probs = c(0.25, 0.5, 0.75), na.rm=TRUE) #don't let the NA's get u chile
+NO3_gradient
+# NH4 thresholds
+cuts_NO3 <- quantile(NO3_21_sorted$mgNO3_kg_soil, probs = c(0.25, 0.5, 0.75), na.rm=TRUE)
+NO3_21_sorted$target_level <- cut(NO3_21_sorted$mgNO3_kg_soil,
+                                  breaks = c(-Inf, cuts_NO3, Inf),
+                                  labels = c("Low", "Med-Low", "Med-High", "High"))
