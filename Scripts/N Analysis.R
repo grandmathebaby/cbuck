@@ -222,14 +222,16 @@ cor.test(Nitrate$absorbance, Nitrate$concentration, method="kendall")
 #             Target N per kg for Pots              #
 #####################################################
 
-#Ammonia
+#Ammonia 10/21
 rm(list=ls())
 NH4 <- read.csv("Data/NH4_Calculated_Result.csv")
 View(NH4)
 # Sorting N per kg of soil w date filter
 NH4_21 <- subset(NH4, date == "10/21/25")
+NH4_21_clean <- subset(NH4_21, !(site %in% c("Franklin", "Fryman")))
+unique(NH4_21_clean$site)
 
-NH4_21_sorted <- NH4_21[order(NH4$mgNH4_kg_soil), ]
+NH4_21_sorted <- NH4_21_clean[order(NH4$mgNH4_kg_soil), ]
 View(NH4_21_sorted)
 
 #Helps to see first and last concentrations 
@@ -241,26 +243,68 @@ summary(NH4_21_sorted$mgNH4_kg_soil)
 NH4_gradient <- quantile(NH4_21_sorted$mgNH4_kg_soil,
          probs = c(0.25, 0.5, 0.75), na.rm=TRUE) #don't let the NA's get u chile
 NH4_gradient
-# NH4 thresholds
+
+#Min.   1st Qu.  Median  Mean   3rd Qu.   Max.  NA's 
+#12.94   27.73   50.90   48.26   68.00   85.93   96 
+
+# NH4 thresholds. Save for later could be helpful for figures or classifying groups idk?
 cuts_NH4 <- quantile(NH4_21_sorted$mgNH4_kg_soil, probs = c(0.25, 0.5, 0.75), na.rm=TRUE)
 NH4_21_sorted$target_level <- cut(NH4_21_sorted$mgNH4_kg_soil,
                                   breaks = c(-Inf, cuts_NH4, Inf),
                                   labels = c("Low", "Med-Low", "Med-High", "High"))
 
-#Nitrate
+##############################################
+
+#Ammonia 10/16 (incl Fryman/Franklin)
+rm(list=ls())
+NH4 <- read.csv("Data/NH4_Calculated_Result.csv")
+View(NH4)
+
+# Sorting N per kg of soil w date filter
+NH4_16 <- subset(NH4, date == "10/16/25")
+NH4_16_sorted <- NH4_16[order(NH4$mgNH4_kg_soil), ]
+View(NH4_16_sorted)
+
+#Helps to see first and last concentrations 
+#head(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+#tail(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+
+summary(NH4_16_sorted$mgNH4_kg_soil)
+#Min.  1st Qu.  Median    Mean  3rd Qu.    Max.  NA's 
+#17.47  47.44   77.40    63.68   82.04    88.51   80 
+
+#--Making the gradient finally
+NH4_gradient <- quantile(NH4_16_sorted$mgNH4_kg_soil,
+                         probs = c(0.25, 0.5, 0.75), na.rm=TRUE) #don't let the NA's get u chile
+NH4_gradient
+
+# NH4 thresholds. Save for later could be helpful for figures or classifying groups idk?
+cuts_NH4 <- quantile(NH4_16_sorted$mgNH4_kg_soil, probs = c(0.25, 0.5, 0.75), na.rm=TRUE)
+NH4_16_sorted$target_level <- cut(NH4_16_sorted$mgNH4_kg_soil,
+                                  breaks = c(-Inf, cuts_NH4, Inf),
+                                  labels = c("Low", "Med-Low", "Med-High", "High"))
+
+#################################################
+
+#--Nitrate 10/21 (-Franklin/Fryman)
 rm(list=ls())
 NO3 <- read.csv("Data/NO3_Calculated_Result.csv")
 View(NO3)
 # Sorting N per kg of soil w date filter
 NO3_21 <- subset(NO3, date == "10/21/25")
+NO3_21_clean <- subset(NO3_21, !(site %in% c("Franklin", "Fryman")))
+unique(NO3_21_clean$site)
 
-NO3_21_sorted <- NO3_21[order(NO3$mgNO3_kg_soil), ]
+NO3_21_sorted <- NO3_21_clean[order(NO3$mgNO3_kg_soil), ]
 View(NO3_21_sorted)
 
 #Helps to see first and last concentrations 
 #head(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
 #tail(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+
 summary(NO3_21_sorted$mgNO3_kg_soil)
+#Min.  1st Qu.  Median    Mean   3rd Qu.   Max.   NA's 
+#2.251  12.365  29.298   26.329  37.428   53.991   96 
 
 #--Making the gradient finally
 NO3_gradient <- quantile(NO3_21_sorted$mgNO3_kg_soil,
@@ -271,3 +315,40 @@ cuts_NO3 <- quantile(NO3_21_sorted$mgNO3_kg_soil, probs = c(0.25, 0.5, 0.75), na
 NO3_21_sorted$target_level <- cut(NO3_21_sorted$mgNO3_kg_soil,
                                   breaks = c(-Inf, cuts_NO3, Inf),
                                   labels = c("Low", "Med-Low", "Med-High", "High"))
+
+################################
+
+#--Nitrate 10/16
+rm(list=ls())
+NO3 <- read.csv("Data/NO3_Calculated_Result.csv")
+View(NO3)
+
+# Sorting N per kg of soil w date filter
+NO3_16 <- subset(NO3, date == "10/16/25")
+NO3_16_sorted <- NO3_16[order(NO3$mgNO3_kg_soil), ]
+View(NO3_16_sorted)
+
+#---Helps to see first and last concentrations 
+#head(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+#tail(NH4_21_sorted[, c("site", "mgNH4_kg_soil")])
+
+summary(NO3_16_sorted$mgNO3_kg_soil)
+#Min.  1st Qu.  Median    Mean   3rd Qu.   Max.  NA's 
+#2.066  19.232  27.280  27.639   38.222   53.673  80 
+
+#--Making the gradient finally
+NO3_gradient <- quantile(NO3_16_sorted$mgNO3_kg_soil,
+                         probs = c(0.25, 0.5, 0.75), na.rm=TRUE) #don't let the NA's get u chile
+NO3_gradient
+# NH4 thresholds
+cuts_NO3 <- quantile(NO3_16_sorted$mgNO3_kg_soil, probs = c(0.25, 0.5, 0.75), na.rm=TRUE)
+NO3_16_sorted$target_level <- cut(NO3_16_sorted$mgNO3_kg_soil,
+                                  breaks = c(-Inf, cuts_NO3, Inf),
+                                  labels = c("Low", "Med-Low", "Med-High", "High"))
+########################
+#--Targets NO3 16
+min_N <- 2.066
+max_N <- 53.673
+
+fertilizer_targets <- seq(from = min_N, to = max_N, length.out = 4)
+fertilizer_targets
