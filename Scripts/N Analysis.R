@@ -310,7 +310,7 @@ summary(NO3_21_sorted$mgNO3_kg_soil)
 NO3_gradient <- quantile(NO3_21_sorted$mgNO3_kg_soil,
                          probs = c(0.25, 0.5, 0.75), na.rm=TRUE) #don't let the NA's get u chile
 NO3_gradient
-# NH4 thresholds
+# NO3 thresholds
 cuts_NO3 <- quantile(NO3_21_sorted$mgNO3_kg_soil, probs = c(0.25, 0.5, 0.75), na.rm=TRUE)
 NO3_21_sorted$target_level <- cut(NO3_21_sorted$mgNO3_kg_soil,
                                   breaks = c(-Inf, cuts_NO3, Inf),
@@ -351,4 +351,6 @@ min_N <- 2.066
 max_N <- 53.673
 
 fertilizer_targets <- seq(from = min_N, to = max_N, length.out = 4)
-fertilizer_targets
+fertilizer_targets #[1]  a)2.06600 b)19.26833 c)36.47067 d)53.67300
+
+
